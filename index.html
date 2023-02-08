@@ -66,10 +66,6 @@
     margin: 25px 104px 40px 7px;
   }
 
-    .settings {
-      background-color: var(--bg-color);
-      display: flex;
-    }
 
 
 
@@ -98,13 +94,20 @@
     color: var(--white);
   }
 
+  
+  .sidebar {
+    background-color: var(--bg-color-main);
+    padding: 60px 0 259px 0;
+    
+  }
 
   .sidebar-item {
-    padding-top: 40px ;
+    margin: 40px 0;
     width: 100%;
   }
 
   .sidebar-content {
+    
     width: 113px;
     display: flex;
     margin: auto;
@@ -112,6 +115,7 @@
 
   .sidebar-content img {
     margin-right: 9px;
+    
   }
 
   .sidebar-item:hover {
@@ -120,10 +124,37 @@
 
 
 
-  .sidebar {
-    background-color: var(--bg-color-main);
-    
-  }
+
+
+
+
+  .dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  height: 39px;
+  
+  display: block;
+  
+  border: none;
+  background: none;
+  width: 100%;
+  
+  cursor: pointer;
+  
+}
+
+
+.dropdown-container {
+  display: none;
+  background-color: var(--bg-color-open);
+  
+}
+
+
+.settings {
+      background-color: var(--bg-color);
+      display: flex;
+      justify-content: center;
+    }
 </style>
 
 
@@ -160,29 +191,30 @@
             <img src="images/Polygon 1.svg" alt="">
           </div>
         </a>
-      </div>
 
-      <div class="sidebar-item">
-        <div class="sidebar-content">
-          <div class="dropdown-container">
-            <a href="#">
+        <div class="dropdown-container">
+          <a href="#">
+            <div class="sidebar-content">
               <img src="images/account_tree.svg" alt="">
               <p>Stránky</p>
-            </a>
-            <a href="#">
+            </div>
+          </a>
+
+          <a href="#">
+            <div class="sidebar-content">
               <img src="images/format_shapes.svg" alt="">
               <p>Textové bloky</p>
-            </a>
-            <a href="#"></a>
-          </div>
+            </div>
+          </a> 
         </div>
+      
       </div>
 
       <div class="sidebar-item">
         <a href="#">
           <div class="sidebar-content">
-          <img src="images/attach_money.svg" alt="">
-          <p>E-shop</p>
+            <img src="images/attach_money.svg" alt="">
+            <p>E-shop</p>
           </div>
         </a>
       </div>
@@ -213,6 +245,25 @@
     </div>
   </main>
 
+</div>
+
+<script>
+
+const dropdown = document.getElementsByClassName("dropdown-btn");
+let i;
+
+for (i = 0; i < dropdown.length; i++) {
+  dropdown[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    const dropdownContent = this.nextElementSibling;
+    if (dropdownContent.style.display === "block") {
+      dropdownContent.style.display = "none";
+    } else {
+      dropdownContent.style.display = "block";
+    }
+  });
+}
+</script>
   
 </body>
 </html>
